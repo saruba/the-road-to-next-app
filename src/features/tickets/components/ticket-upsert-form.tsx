@@ -2,6 +2,7 @@
 import { Ticket } from "@prisma/client";
 import { useActionState } from "react";
 import { FieldError } from "@/components/form/field-error";
+import { Form } from "@/components/form/form";
 import { SubmitButton } from "@/components/form/submit-button";
 import { EMPTY_ACTION_STATE } from "@/components/form/utils/to-action-state";
 import { Input } from "@/components/ui/input";
@@ -19,7 +20,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
     EMPTY_ACTION_STATE
   );
   return (
-    <form action={action} className="flex flex-col gap-y-2">
+    <Form action={action} actionState={state}>
       <Label htmlFor="title">Title</Label>
       <Input
         id="title"
@@ -40,8 +41,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
       <FieldError errors={state.errors} name="content" />
 
       <SubmitButton label={ticket ? "Edit" : "Create"} />
-      {state.message}
-    </form>
+    </Form>
   );
 };
 
