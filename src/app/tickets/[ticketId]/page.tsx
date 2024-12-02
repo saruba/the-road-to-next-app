@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import { Messages } from "@/components/messages";
 import { TicketItem } from "@/features/tickets/components/ticket-item";
 import { getTicket } from "@/features/tickets/queries/get-ticket";
 
@@ -19,12 +18,9 @@ const TicketPage = async ({ params }: TicketPageProps) => {
   }
 
   return (
-    <>
-      <div className="flex justify-center animate-fade-from-top">
-        <TicketItem ticket={ticket} isDetail />
-      </div>
-      <Messages />
-    </>
+    <div className="flex justify-center animate-fade-from-top">
+      <TicketItem ticket={ticket} isDetail />
+    </div>
   );
 };
 
