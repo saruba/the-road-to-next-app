@@ -25,11 +25,7 @@ const signUpSchema = z
         (value) => !value.includes(' '),
         'Username cannot contain spaces'
       ),
-    email: z
-      .string()
-      .min(1, { message: 'Is required' })
-      .max(191)
-      .email(),
+    email: z.string().min(1, { message: 'Is required' }).max(191).email(),
     password: z.string().min(6).max(191),
     confirmPassword: z.string().min(6).max(191),
   })
@@ -43,10 +39,7 @@ const signUpSchema = z
     }
   });
 
-export const signUp = async (
-  _actionState: ActionState,
-  formData: FormData
-) => {
+export const signUp = async (_actionState: ActionState, formData: FormData) => {
   try {
     const { username, email, password } = signUpSchema.parse(
       Object.fromEntries(formData)
