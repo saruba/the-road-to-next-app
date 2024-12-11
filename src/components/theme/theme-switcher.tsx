@@ -1,16 +1,16 @@
-"use client";
-import { MoonIcon, SunIcon } from "lucide-react";
-import { useTheme } from "next-themes";
-import { Button } from "../ui/button";
+'use client'
+import { MoonIcon, SunIcon } from 'lucide-react'
+import { useTheme } from 'next-themes'
+import { Button } from '../ui/button'
 
 const ThemeSwitcher = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme()
 
   return (
     <Button
       variant="outline"
       size="icon"
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
     >
       <SunIcon
         className="
@@ -26,7 +26,7 @@ const ThemeSwitcher = () => {
       />
       <span className="sr-only">Toggle theme</span>
     </Button>
-  );
-};
+  )
+}
 
-export { ThemeSwitcher };
+export { ThemeSwitcher }

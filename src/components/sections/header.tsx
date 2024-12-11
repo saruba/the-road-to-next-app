@@ -1,38 +1,21 @@
-'use client';
-import { KanbanIcon, LogOutIcon } from 'lucide-react';
-import Link from 'next/link';
-import { signOut } from '@/features/auth/actions/sign-out';
-import { useAuth } from '@/features/auth/hooks/use-auth';
-import {
-  homePath,
-  signInPath,
-  signUpPath,
-  ticketsPath,
-} from '@/paths';
-import { SubmitButton } from '../form/submit-button';
-import { ThemeSwitcher } from '../theme/theme-switcher';
-import { Button, buttonVariants } from '../ui/button';
+'use client'
+import { KanbanIcon } from 'lucide-react'
+import Link from 'next/link'
+import { useAuth } from '@/features/auth/hooks/use-auth'
+import { homePath, signInPath, signUpPath } from '@/paths'
+import { AccountDropdown } from '../account-dropdown'
+import { ThemeSwitcher } from '../theme/theme-switcher'
+import { Button, buttonVariants } from '../ui/button'
 
 const Header = () => {
-  // const { user } = await getAuth();
-  const { user, isFetched } = useAuth();
+  const { user, isFetched } = useAuth()
 
   if (!isFetched) {
-    return null;
+    return null
   }
 
   const navItems = user ? (
-    <>
-      <Link
-        href={ticketsPath()}
-        className={buttonVariants({ variant: 'outline' })}
-      >
-        Tickets
-      </Link>
-      <form action={signOut}>
-        <SubmitButton label="Sign Out" icon={<LogOutIcon />} />
-      </form>
-    </>
+    <AccountDropdown user={user} />
   ) : (
     <>
       <Link
@@ -48,7 +31,7 @@ const Header = () => {
         Sign In
       </Link>
     </>
-  );
+  )
   return (
     <nav
       className="
@@ -72,7 +55,7 @@ const Header = () => {
         {navItems}
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export { Header };
+export { Header }

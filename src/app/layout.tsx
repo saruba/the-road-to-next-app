@@ -1,31 +1,32 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { Messages } from "@/components/messages";
-import { Header } from "@/components/sections/header";
-import { ThemeProvider } from "@/components/theme/theme-provider";
-import { Toaster } from "@/components/ui/sonner";
+import './globals.css'
+import type { Metadata } from 'next'
+import localFont from 'next/font/local'
+import { Messages } from '@/components/messages'
+import { Header } from '@/components/sections/header'
+import { Sidebar } from '@/components/sidebar/components/sidebar'
+import { ThemeProvider } from '@/components/theme/theme-provider'
+import { Toaster } from '@/components/ui/sonner'
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
+  src: './fonts/GeistVF.woff',
+  variable: '--font-geist-sans',
+  weight: '100 900',
+})
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+  src: './fonts/GeistMonoVF.woff',
+  variable: '--font-geist-mono',
+  weight: '100 900',
+})
 
 export const metadata: Metadata = {
-  title: "The Road to Next.js",
-  description: "My journey to learn Next.js",
-};
+  title: 'The Road to Next.js',
+  description: 'My journey to learn Next.js',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html suppressHydrationWarning lang="en">
@@ -34,21 +35,24 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Header />
-          <main
-            className="
-            min-h-screen flex-1
-            overflow-y-auto overflow-x-hidden
-            py-24 px-8
-            bg-secondary/20
-            flex flex-col
-          "
-          >
-            {children}
-          </main>
+          <div className="flex h-screen overflow-hidden border-collapse">
+            <Sidebar />
+            <main
+              className="
+                min-h-screen flex-1
+                overflow-y-auto overflow-x-hidden
+                py-24 px-8
+                bg-secondary/20
+                flex flex-col
+              "
+            >
+              {children}
+            </main>
+          </div>
           <Toaster expand />
           <Messages />
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

@@ -5,15 +5,15 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./ui/card";
+} from './ui/card'
 
 type CardCompactProps = {
-  title: string;
-  description: string;
-  className?: string;
-  content: React.ReactNode;
-  footer?: React.ReactNode;
-};
+  title: string
+  description: string
+  className?: string
+  content: React.ReactNode
+  footer?: React.ReactNode
+}
 
 const CardCompact = ({
   title,
@@ -33,7 +33,7 @@ const CardCompact = ({
         <CardFooter className="flex justify-between">{footer}</CardFooter>
       )}
     </Card>
-  );
-};
+  )
+}
 
-export { CardCompact };
+export { CardCompact }

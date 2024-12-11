@@ -1,25 +1,25 @@
-import { User } from '@prisma/client';
-import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { getAuth } from '../queries/get-auth';
+import { User } from '@prisma/client'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { getAuth } from '../queries/get-auth'
 
 const useAuth = () => {
-  const [user, setUser] = useState<User | null>(null);
-  const [isFetched, setFetched] = useState(false);
+  const [user, setUser] = useState<User | null>(null)
+  const [isFetched, setFetched] = useState(false)
 
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   useEffect(() => {
     const fetchUser = async () => {
-      const { user } = await getAuth();
-      setUser(user);
-      setFetched(true);
-    };
+      const { user } = await getAuth()
+      setUser(user)
+      setFetched(true)
+    }
 
-    fetchUser();
-  }, [pathname]);
+    fetchUser()
+  }, [pathname])
 
-  return { user, isFetched };
-};
+  return { user, isFetched }
+}
 
-export { useAuth };
+export { useAuth }

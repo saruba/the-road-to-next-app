@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/lib/prisma'
 
 export const getTicket = async (id: string) => {
   return await prisma.ticket.findUnique({
@@ -12,5 +12,5 @@ export const getTicket = async (id: string) => {
         },
       },
     },
-  });
-};
+  })
+}

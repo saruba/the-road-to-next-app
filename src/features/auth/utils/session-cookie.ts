@@ -1,10 +1,10 @@
-import { cookies } from 'next/headers';
+import { cookies } from 'next/headers'
 
-export const SESSION_COOKIE_NAME = 'session';
+export const SESSION_COOKIE_NAME = 'session'
 
 export const setSessionCookie = async (
   sessionToken: string,
-  expiresAt: Date
+  expiresAt: Date,
 ) => {
   const cookie = {
     name: SESSION_COOKIE_NAME,
@@ -16,10 +16,10 @@ export const setSessionCookie = async (
       path: '/',
       expires: expiresAt,
     },
-  };
+  }
 
-  (await cookies()).set(cookie.name, cookie.value, cookie.attributes);
-};
+  ;(await cookies()).set(cookie.name, cookie.value, cookie.attributes)
+}
 
 export const deleteSessionCookie = async () => {
   const cookie = {
@@ -32,7 +32,7 @@ export const deleteSessionCookie = async () => {
       path: '/',
       maxAge: 0,
     },
-  };
+  }
 
-  (await cookies()).set(cookie.name, cookie.value, cookie.attributes);
-};
+  ;(await cookies()).set(cookie.name, cookie.value, cookie.attributes)
+}

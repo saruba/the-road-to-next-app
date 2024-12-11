@@ -1,4 +1,4 @@
-import { LoaderCircleIcon } from "lucide-react";
+import { LoaderCircleIcon } from 'lucide-react'
 
 const Spinner = () => {
   return (
@@ -8,7 +8,7 @@ const Spinner = () => {
     >
       <LoaderCircleIcon className="h-16 w-16 animate-spin" />
     </div>
-  );
-};
+  )
+}
 
-export { Spinner };
+export { Spinner }

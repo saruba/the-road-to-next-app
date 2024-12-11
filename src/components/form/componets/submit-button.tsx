@@ -1,23 +1,23 @@
-'use client';
+'use client'
 
-import clsx from 'clsx';
-import { LucideLoaderCircle } from 'lucide-react';
-import { cloneElement } from 'react';
-import { useFormStatus } from 'react-dom';
-import { Button } from '../ui/button';
+import clsx from 'clsx'
+import { LucideLoaderCircle } from 'lucide-react'
+import { cloneElement } from 'react'
+import { useFormStatus } from 'react-dom'
+import { Button } from '@/components/ui/button'
 
 type SubmitButtonProps = {
-  label?: string;
-  icon?: React.ReactElement;
+  label?: string
+  icon?: React.ReactElement
   variant?:
     | 'default'
     | 'destructive'
     | 'outline'
     | 'secondary'
     | 'ghost'
-    | 'link';
-  size?: 'default' | 'sm' | 'lg' | 'icon';
-};
+    | 'link'
+  size?: 'default' | 'sm' | 'lg' | 'icon'
+}
 
 const SubmitButton = ({
   label,
@@ -25,15 +25,10 @@ const SubmitButton = ({
   variant = 'default',
   size = 'default',
 }: SubmitButtonProps) => {
-  const { pending } = useFormStatus();
+  const { pending } = useFormStatus()
 
   return (
-    <Button
-      disabled={pending}
-      type="submit"
-      variant={variant}
-      size={size}
-    >
+    <Button disabled={pending} type="submit" variant={variant} size={size}>
       {pending && (
         <LucideLoaderCircle
           className={clsx('h-4 w-4 animate-spin', {
@@ -56,7 +51,7 @@ const SubmitButton = ({
             </span>
           )}
     </Button>
-  );
-};
+  )
+}
 
-export { SubmitButton };
+export { SubmitButton }

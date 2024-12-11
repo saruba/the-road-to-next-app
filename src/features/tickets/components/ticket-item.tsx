@@ -1,34 +1,34 @@
-import clsx from 'clsx';
+import clsx from 'clsx'
 import {
   MoreVerticalIcon,
   PencilIcon,
   SquareArrowOutUpRightIcon,
-} from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+} from 'lucide-react'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import { getAuth } from '@/features/auth/queries/get-auth';
-import { isOwner } from '@/features/auth/utils/is-owner';
-import { TicketWithMetadata } from '@/features/ticket/types';
-import { ticketEditPath, ticketPath } from '@/paths';
-import { toCurrencyFromCent } from '@/utils/currency';
-import { TICKET_ICONS } from '../constants';
-import { TicketMoreMenu } from './ticket-more-menu';
+} from '@/components/ui/card'
+import { getAuth } from '@/features/auth/queries/get-auth'
+import { isOwner } from '@/features/auth/utils/is-owner'
+import { TicketWithMetadata } from '@/features/tickets/types'
+import { ticketEditPath, ticketPath } from '@/paths'
+import { toCurrencyFromCent } from '@/utils/currency'
+import { TICKET_ICONS } from '../constants'
+import { TicketMoreMenu } from './ticket-more-menu'
 
 type TicketItemProps = {
-  ticket: TicketWithMetadata;
-  isDetail?: boolean;
-};
+  ticket: TicketWithMetadata
+  isDetail?: boolean
+}
 
 const TicketItem = async ({ ticket, isDetail }: TicketItemProps) => {
-  const { user } = await getAuth();
-  const isTicketOwner = isOwner(user, ticket);
+  const { user } = await getAuth()
+  const isTicketOwner = isOwner(user, ticket)
 
   const detailButton = isTicketOwner ? (
     <Button variant="outline" size="icon" asChild>
@@ -36,14 +36,14 @@ const TicketItem = async ({ ticket, isDetail }: TicketItemProps) => {
         <SquareArrowOutUpRightIcon className="h-4 w-4" />
       </Link>
     </Button>
-  ) : null;
+  ) : null
   const editButton = isTicketOwner ? (
     <Button variant="outline" size="icon" asChild>
       <Link prefetch href={ticketEditPath(ticket.id)}>
         <PencilIcon className="h-4 w-4" />
       </Link>
     </Button>
-  ) : null;
+  ) : null
 
   const moreMenu = (
     <TicketMoreMenu
@@ -54,7 +54,7 @@ const TicketItem = async ({ ticket, isDetail }: TicketItemProps) => {
         </Button>
       }
     />
-  );
+  )
   return (
     <div
       className={clsx('w-full flex gap-x-1', {
@@ -101,7 +101,7 @@ const TicketItem = async ({ ticket, isDetail }: TicketItemProps) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export { TicketItem };
+export { TicketItem }

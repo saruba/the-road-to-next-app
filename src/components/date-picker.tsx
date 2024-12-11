@@ -1,26 +1,26 @@
-"use client";
+'use client'
 
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
-import { useImperativeHandle, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import { format } from 'date-fns'
+import { CalendarIcon } from 'lucide-react'
+import { useImperativeHandle, useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from '@/components/ui/popover'
 
 export type ImperativeHandleFromDatePicker = {
-  reset: () => void;
-};
+  reset: () => void
+}
 
 type DatePickerProps = {
-  id: string;
-  name: string;
-  defaultValue?: string | undefined;
-  imperativeHandleRef?: React.RefObject<ImperativeHandleFromDatePicker>;
-};
+  id: string
+  name: string
+  defaultValue?: string | undefined
+  imperativeHandleRef?: React.RefObject<ImperativeHandleFromDatePicker>
+}
 
 const DatePicker = ({
   id,
@@ -28,19 +28,19 @@ const DatePicker = ({
   defaultValue,
   imperativeHandleRef,
 }: DatePickerProps) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   const [date, setDate] = useState<Date | undefined>(
-    defaultValue ? new Date(defaultValue) : new Date()
-  );
+    defaultValue ? new Date(defaultValue) : new Date(),
+  )
   useImperativeHandle(imperativeHandleRef, () => ({
     reset: () => setDate(new Date()),
-  }));
+  }))
 
-  const formattedStringDate = date ? format(date, "yyyy-MM-dd") : "";
+  const formattedStringDate = date ? format(date, 'yyyy-MM-dd') : ''
   const handleSelect = (selectedDate: Date | undefined) => {
-    setDate(selectedDate);
-    setOpen(false);
-  };
+    setDate(selectedDate)
+    setOpen(false)
+  }
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -63,7 +63,7 @@ const DatePicker = ({
         />
       </PopoverContent>
     </Popover>
-  );
-};
+  )
+}
 
-export { DatePicker };
+export { DatePicker }

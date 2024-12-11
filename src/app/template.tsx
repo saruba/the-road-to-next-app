@@ -1,8 +1,8 @@
-import { Messages } from "@/components/messages";
+import { Messages } from '@/components/messages'
 
 type RootTemplateProps = {
-  children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 export default function RootTemplate({ children }: RootTemplateProps) {
   return (
@@ -10,5 +10,5 @@ export default function RootTemplate({ children }: RootTemplateProps) {
       {children}
       <Messages />
     </>
-  );
+  )
 }

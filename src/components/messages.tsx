@@ -1,25 +1,25 @@
-"use client";
+'use client'
 
-import { usePathname } from "next/navigation";
-import { useEffect } from "react";
-import { toast } from "sonner";
-import { popCookieByKey } from "@/actions/cookies";
+import { usePathname } from 'next/navigation'
+import { useEffect } from 'react'
+import { toast } from 'sonner'
+import { popCookieByKey } from '@/actions/cookies'
 
 const Messages = () => {
-  const pathname = usePathname();
+  const pathname = usePathname()
   useEffect(() => {
     const showMessages = async () => {
-      const message = await popCookieByKey("toast");
+      const message = await popCookieByKey('toast')
 
       if (message) {
-        toast.success(message);
+        toast.success(message)
       }
-    };
+    }
 
-    showMessages();
-  }, [pathname]);
+    showMessages()
+  }, [pathname])
 
-  return null;
-};
+  return null
+}
 
-export { Messages };
+export { Messages }

@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import { Ticket, TicketStatus } from "@prisma/client";
-import { LucideTrash } from "lucide-react";
-import { toast } from "sonner";
-import { useConfirmDialog } from "@/components/confirm-dialog";
+import { Ticket, TicketStatus } from '@prisma/client'
+import { LucideTrash } from 'lucide-react'
+import { toast } from 'sonner'
+import { useConfirmDialog } from '@/components/confirm-dialog'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,15 +12,15 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { deleteTicket } from "../actions/delete-ticket";
-import { updateTicketStatus } from "../actions/update-ticket-status";
-import { TICKET_STATUS_LABELS } from "../constants";
+} from '@/components/ui/dropdown-menu'
+import { deleteTicket } from '../actions/delete-ticket'
+import { updateTicketStatus } from '../actions/update-ticket-status'
+import { TICKET_STATUS_LABELS } from '../constants'
 
 type TicketMoreMenuProps = {
-  ticket: Ticket;
-  trigger: React.ReactElement;
-};
+  ticket: Ticket
+  trigger: React.ReactElement
+}
 
 const TicketMoreMenu = ({ ticket, trigger }: TicketMoreMenuProps) => {
   const [deleteButton, deleteDialog] = useConfirmDialog({
@@ -31,23 +31,23 @@ const TicketMoreMenu = ({ ticket, trigger }: TicketMoreMenuProps) => {
         <span>Delete</span>
       </DropdownMenuItem>
     ),
-  });
+  })
 
   const handleUpdateTicketStatus = async (value: string) => {
-    const promise = updateTicketStatus(ticket.id, value as TicketStatus);
+    const promise = updateTicketStatus(ticket.id, value as TicketStatus)
 
     toast.promise(promise, {
-      loading: "Updating status...",
-    });
+      loading: 'Updating status...',
+    })
 
-    const result = await promise;
+    const result = await promise
 
-    if (result.status === "ERROR") {
-      toast.error(result.message);
-    } else if (result.status === "SUCCESS") {
-      toast.success(result.message);
+    if (result.status === 'ERROR') {
+      toast.error(result.message)
+    } else if (result.status === 'SUCCESS') {
+      toast.success(result.message)
     }
-  };
+  }
 
   const ticketStatusRadioGroupItems = (
     <DropdownMenuRadioGroup
@@ -60,7 +60,7 @@ const TicketMoreMenu = ({ ticket, trigger }: TicketMoreMenuProps) => {
         </DropdownMenuRadioItem>
       ))}
     </DropdownMenuRadioGroup>
-  );
+  )
 
   return (
     <>
@@ -74,7 +74,7 @@ const TicketMoreMenu = ({ ticket, trigger }: TicketMoreMenuProps) => {
         </DropdownMenuContent>
       </DropdownMenu>
     </>
-  );
-};
+  )
+}
 
-export { TicketMoreMenu };
+export { TicketMoreMenu }
