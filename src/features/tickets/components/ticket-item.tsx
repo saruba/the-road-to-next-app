@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/card';
 import { getAuth } from '@/features/auth/queries/get-auth';
 import { isOwner } from '@/features/auth/utils/is-owner';
-import { TicketWithMetadata } from '@/features/ticket/types';
+import { TicketWithMetadata } from '@/features/tickets/types';
 import { ticketEditPath, ticketPath } from '@/paths';
 import { toCurrencyFromCent } from '@/utils/currency';
 import { TICKET_ICONS } from '../constants';

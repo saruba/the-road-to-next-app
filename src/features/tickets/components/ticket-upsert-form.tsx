@@ -1,19 +1,19 @@
-"use client";
-import { Ticket } from "@prisma/client";
-import { useActionState, useRef } from "react";
+'use client';
+import { Ticket } from '@prisma/client';
+import { useActionState, useRef } from 'react';
 import {
   DatePicker,
   ImperativeHandleFromDatePicker,
-} from "@/components/date-picker";
-import { FieldError } from "@/components/form/field-error";
-import { Form } from "@/components/form/form";
-import { SubmitButton } from "@/components/form/submit-button";
-import { EMPTY_ACTION_STATE } from "@/components/form/utils/to-action-state";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { fromCent } from "@/utils/currency";
-import { upsertTicket } from "../actions/upsert-ticket";
+} from '@/components/date-picker';
+import { FieldError } from '@/components/form/componets/field-error';
+import { Form } from '@/components/form/componets/form';
+import { SubmitButton } from '@/components/form/componets/submit-button';
+import { EMPTY_ACTION_STATE } from '@/components/form/utils/to-action-state';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { fromCent } from '@/utils/currency';
+import { upsertTicket } from '../actions/upsert-ticket';
 
 type TicketUpsertFormProps = {
   ticket?: Ticket;
@@ -32,13 +32,19 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
   };
 
   return (
-    <Form action={action} actionState={state} onSuccess={handleSuccess}>
+    <Form
+      action={action}
+      actionState={state}
+      onSuccess={handleSuccess}
+    >
       <Label htmlFor="title">Title</Label>
       <Input
         id="title"
         name="title"
         type="text"
-        defaultValue={(state.payload?.get("title") as string) ?? ticket?.title}
+        defaultValue={
+          (state.payload?.get('title') as string) ?? ticket?.title
+        }
       />
       <FieldError errors={state.errors} name="title" />
 
@@ -47,7 +53,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
         id="content"
         name="content"
         defaultValue={
-          (state.payload?.get("content") as string) ?? ticket?.content
+          (state.payload?.get('content') as string) ?? ticket?.content
         }
       />
       <FieldError errors={state.errors} name="content" />
@@ -58,7 +64,8 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
             id="deadline"
             name="deadline"
             defaultValue={
-              (state.payload?.get("deadline") as string) ?? ticket?.deadline
+              (state.payload?.get('deadline') as string) ??
+              ticket?.deadline
             }
             imperativeHandleRef={datePickerImperativeHandleRef}
           />
@@ -72,14 +79,14 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
             type="number"
             step=".01"
             defaultValue={
-              (state.payload?.get("bounty") as string) ??
-              (ticket?.bounty ? fromCent(ticket?.bounty) : "")
+              (state.payload?.get('bounty') as string) ??
+              (ticket?.bounty ? fromCent(ticket?.bounty) : '')
             }
           />
           <FieldError errors={state.errors} name="bounty" />
         </div>
       </div>
-      <SubmitButton label={ticket ? "Edit" : "Create"} />
+      <SubmitButton label={ticket ? 'Edit' : 'Create'} />
     </Form>
   );
 };

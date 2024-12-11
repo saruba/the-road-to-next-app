@@ -1,4 +1,4 @@
-import { cloneElement, useActionState, useState } from "react";
+import { cloneElement, useActionState, useState } from 'react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -8,10 +8,13 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import { Form } from "./form/form";
-import { SubmitButton } from "./form/submit-button";
-import { ActionState, EMPTY_ACTION_STATE } from "./form/utils/to-action-state";
+} from '@/components/ui/alert-dialog';
+import { Form } from './form/componets/form';
+import { SubmitButton } from './form/componets/submit-button';
+import {
+  ActionState,
+  EMPTY_ACTION_STATE,
+} from './form/utils/to-action-state';
 
 type UseConfirmDialogArgs = {
   title?: string;
@@ -21,13 +24,16 @@ type UseConfirmDialogArgs = {
 };
 
 const useConfirmDialog = ({
-  title = "Are you absolutely sure?",
-  description = "This action cannot be undone. Make sure you understand the consequences.",
+  title = 'Are you absolutely sure?',
+  description = 'This action cannot be undone. Make sure you understand the consequences.',
   action,
   trigger,
 }: UseConfirmDialogArgs) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [actionState, formAction] = useActionState(action, EMPTY_ACTION_STATE);
+  const [actionState, formAction] = useActionState(
+    action,
+    EMPTY_ACTION_STATE
+  );
 
   const handleSuccess = () => {
     setIsOpen(false);
@@ -41,7 +47,9 @@ const useConfirmDialog = ({
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>{title}</AlertDialogTitle>
-          <AlertDialogDescription>{description}</AlertDialogDescription>
+          <AlertDialogDescription>
+            {description}
+          </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
