@@ -1,18 +1,13 @@
-'use client'
 import { KanbanIcon } from 'lucide-react'
 import Link from 'next/link'
-import { useAuth } from '@/features/auth/hooks/use-auth'
+import { getAuth } from '@/features/auth/queries/get-auth'
 import { homePath, signInPath, signUpPath } from '@/paths'
 import { AccountDropdown } from '../account-dropdown'
 import { ThemeSwitcher } from '../theme/theme-switcher'
 import { Button, buttonVariants } from '../ui/button'
 
-const Header = () => {
-  const { user, isFetched } = useAuth()
-
-  if (!isFetched) {
-    return null
-  }
+const Header = async () => {
+  const { user } = await getAuth()
 
   const navItems = user ? (
     <AccountDropdown user={user} />
